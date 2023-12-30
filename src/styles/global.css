@@ -7,6 +7,7 @@ body {
 *,
 *::before,
 *::after {
+    word-break: break-word;
     box-sizing: border-box;
 }
 /* Fix line height and font rendering */
@@ -100,7 +101,9 @@ main {
 }
 
 input[type="text"] {
-    padding: 0.5em 1em;
+    width: 0;
+    min-width: 100%; /* Fix some jank with inputs */
+    padding: 0.5em;
     border: unset;
     border-radius: var(--radius-small);
     background-color: var(--text-input-bg);
