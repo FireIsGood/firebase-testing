@@ -6,7 +6,6 @@
         remove,
         onValue,
         type DataSnapshot,
-        type Database,
     } from "firebase/database";
     const itemsInCart = ref(database, "items");
 

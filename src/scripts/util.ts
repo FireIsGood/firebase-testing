@@ -2,7 +2,8 @@ import { initializeApp } from "firebase/app";
 import { getDatabase } from "firebase/database";
 import type { FirebaseOptions } from "firebase/app";
 
-const databaseLocation = import.meta.env.DATABASEURL;
+export const databaseLocation =
+    "https://playground-b084a-default-rtdb.firebaseio.com/";
 
 const appSettings: FirebaseOptions = {
     databaseURL: databaseLocation,
