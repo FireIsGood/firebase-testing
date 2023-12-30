@@ -92,8 +92,11 @@ body {
 
 /* Content styles */
 main {
+    display: grid;
+    gap: 1rem;
     max-width: 500px;
     margin-inline: auto;
+    padding: 1rem;
 }
 
 input[type="text"] {

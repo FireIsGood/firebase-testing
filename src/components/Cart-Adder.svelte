@@ -19,10 +19,11 @@
     let item: string = "";
 
     function handleNewItem() {
+        const itemClean = item.trim();
         let cartItemNames = cartItems.map((i) => i.value);
 
-        const inputExists = item === "";
-        const alreadyInCart: boolean = cartItemNames.includes(item);
+        const inputExists = itemClean === "";
+        const alreadyInCart: boolean = cartItemNames.includes(itemClean);
         if (inputExists || alreadyInCart) {
             item = "";
             return;
@@ -52,61 +53,71 @@
     }
 </script>
 
-<div class="cart-container">
-    <form class="inputs" action="" on:submit={handleForm}>
-        <input
-            bind:value={item}
-            type="text"
-            id="input-field"
-            placeholder="Bread"
-            autocomplete="off"
-        />
-        <input
-            type="submit"
-            value="Add to cart"
-            id="add-button"
-            on:click={handleNewItem}
-        />
-    </form>
-    <ul class="cart">
-        {#each cartItems as { key, value }}
-            <li>
-                <button on:click={() => handleDelete(key)}
-                    >{value}
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="26"
-                        height="26"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        class="lucide lucide-x"
-                        ><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg
-                    >
-                </button>
-            </li>
-        {/each}
-    </ul>
-</div>
+<form class="inputs" action="" on:submit={handleForm}>
+    <input
+        bind:value={item}
+        type="text"
+        id="input-field"
+        placeholder="Bread"
+        autocomplete="off"
+    />
+    <input
+        type="submit"
+        value="Add to cart"
+        id="add-button"
+        on:click={handleNewItem}
+    />
+</form>
+
+{#if cartItems.length === 0}
+    <div class="loading-icon">
+        <img src="/spinner.svg" alt="" />
+    </div>
+{/if}
+
+<ul class="cart">
+    {#each cartItems as { key, value }, i}
+        <li>
+            <button style={`--offset: ${i}`} on:click={() => handleDelete(key)}
+                >{value}
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="26"
+                    height="26"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="lucide lucide-x"
+                    ><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg
+                >
+            </button>
+        </li>
+    {/each}
+</ul>
 
 <style>
     /* Default style reset */
-    .cart-container {
-        margin: 1rem;
-    }
-    .cart-container > * + * {
-        margin-top: 1rem;
+    ul {
+        margin: 0;
     }
 
+    /* Form style */
     .inputs {
         display: flex;
         flex-direction: column;
         gap: 1rem;
     }
 
+    /* Loading icon style */
+
+    .loading-icon {
+        margin-inline: auto;
+    }
+
+    /* Cart style */
     .cart {
         display: flex;
         flex-wrap: wrap;
@@ -118,7 +129,7 @@
         display: contents;
     }
 
-    /* Button style */
+    /* Cart item button style */
     .cart li > button {
         position: relative;
         flex-grow: 1;
@@ -128,6 +139,21 @@
         color: var(--chip-color);
         box-shadow: var(--shadow-light);
         border-radius: var(--radius-small);
+        animation: cart-item-in ease-in-out forwards;
+        animation-duration: 250ms;
+        animation-delay: calc(35ms * var(--offset, 0));
+        opacity: 0;
+    }
+
+    @keyframes cart-item-in {
+        from {
+            opacity: 0;
+            translate: 0 10px;
+        }
+        to {
+            opacity: 1;
+            translate: 0 0;
+        }
     }
 
     /* Delete icon style */
