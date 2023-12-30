@@ -1,0 +1,22 @@
+---
+import "../styles/global.css";
+import Head from "../components/Head.astro";
+
+interface Props {
+    title: string;
+    description: string;
+    viewTransition?: boolean;
+}
+
+const { title, description, viewTransition = true } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+    <Head {title} {description} {viewTransition} />
+    <body>
+        <main id="main">
+            <slot />
+        </main>
+    </body>
+</html>

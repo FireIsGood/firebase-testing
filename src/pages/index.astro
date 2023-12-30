@@ -1,0 +1,27 @@
+---
+import Layout from "../layouts/Layout.astro";
+import CartAdder from "../components/Cart-Adder.svelte";
+---
+
+<Layout
+    title="Add to cart"
+    description="Shopping cart home page"
+    viewTransition={false}
+>
+    <div class="icon">
+        <img src="whale.svg" alt="" />
+    </div>
+    <CartAdder client:load />
+</Layout>
+
+<style>
+    .icon {
+        width: 65%;
+        user-select: none;
+        margin-inline: auto;
+    }
+    .icon img {
+        -webkit-user-drag: none;
+        user-drag: none;
+    }
+</style>

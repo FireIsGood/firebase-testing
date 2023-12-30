@@ -1,0 +1,129 @@
+html,
+body {
+    height: 100%;
+}
+
+/* Box sizing */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+/* Fix line height and font rendering */
+body {
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+/* Fix media defaults */
+img,
+picture,
+video,
+canvas,
+svg {
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+    font-style: italic;
+}
+/* Fix input styles */
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+/* Fix text overflow */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    overflow-wrap: break-word;
+}
+/* Fix link colors */
+:where(a) {
+    color: #03f;
+    text-underline-offset: 0.2em;
+}
+:where(a) :visited {
+    color: #7d013e;
+}
+
+/* Variables */
+:root {
+    /* colors */
+    --background-primary: #eff0f5;
+
+    --border-color: #282335;
+
+    --chip-bg: #fffdf5;
+    --chip-bg-hover: #fde9bf;
+    --chip-text: #282335;
+    --chip-delete: #d22f2f;
+
+    --text-input-bg: #dce1ec;
+    --text-input-text: #282335;
+    --text-input-text-placeholder: #afb3bf;
+    --button-bg: #a9475a;
+    --button-bg-hover: #b75366;
+    --button-bg-active: #973f50;
+    --button-text: white;
+
+    /* Shadows */
+    --shadow-light: 0 1px 4px #0002;
+
+    /* Sizes */
+    --radius-small: 8px;
+    --radius-medium: 16px;
+
+    /* Fonts */
+    --font-normal: system-ui, sans-serif;
+}
+
+/* Main styles */
+body {
+    margin: 0;
+    background-color: var(--background-primary);
+    font-family: var(--font-normal);
+    font-size: 1.4rem;
+}
+
+/* Content styles */
+main {
+    max-width: 500px;
+    margin-inline: auto;
+}
+
+input[type="text"] {
+    padding: 0.5em 1em;
+    border: unset;
+    border-radius: var(--radius-small);
+    background-color: var(--text-input-bg);
+    color: var(--text-input-text);
+    text-align: center;
+}
+input[type="text"]::placeholder {
+    color: var(--text-input-text-placeholder);
+    user-select: none;
+}
+
+input[type="submit"],
+button {
+    padding: 0.5em 1em;
+    border: unset;
+    border-radius: var(--radius-small);
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    transition: background-color 70ms ease-out;
+    cursor: pointer;
+}
+input[type="off"]:hover,
+button:hover {
+    background-color: var(--button-bg-hover);
+}
+input[type="submit"]:active,
+button:active {
+    background-color: var(--button-bg-active);
+}
