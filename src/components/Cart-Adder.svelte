@@ -71,7 +71,7 @@
 
 {#if cartItems.length === 0}
     <div class="loading-icon">
-        <img src="/spinner.svg" alt="" />
+        <slot name="spinner" />
     </div>
 {/if}
 
@@ -114,6 +114,7 @@
     /* Loading icon style */
 
     .loading-icon {
+        max-width: 50%;
         margin-inline: auto;
     }
 
@@ -134,7 +135,7 @@
         position: relative;
         flex-grow: 1;
         text-align: center;
-        padding: 0.5em 1em;
+        padding: 0.5em;
         background-color: var(--chip-bg);
         color: var(--chip-color);
         box-shadow: var(--shadow-light);

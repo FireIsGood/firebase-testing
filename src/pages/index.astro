@@ -1,4 +1,5 @@
 ---
+import { Icon } from "astro-icon/components";
 import Layout from "../layouts/Layout.astro";
 import CartAdder from "../components/Cart-Adder.svelte";
 ---
@@ -9,9 +10,11 @@ import CartAdder from "../components/Cart-Adder.svelte";
     viewTransition={false}
 >
     <div class="icon">
-        <img src="whale.svg" alt="" />
+        <Icon name="whale" width={500} height={500} />
     </div>
-    <CartAdder client:load />
+    <CartAdder client:load>
+        <Icon slot="spinner" name="spinner" width={500} height={500} />
+    </CartAdder>
 </Layout>
 
 <style>
