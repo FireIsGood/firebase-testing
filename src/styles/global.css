@@ -51,6 +51,10 @@ h6 {
 :where(a) :visited {
     color: #7d013e;
 }
+/* Better focus color */
+:focus-visible {
+    outline: 4px solid #3d2b1f;
+}
 
 /* Variables */
 :root {
