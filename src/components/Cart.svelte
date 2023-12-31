@@ -41,9 +41,11 @@
     // Updating live
     onValue(itemsInCart, (snapshot: DataSnapshot | null) => {
         const snapshotOrEmpty: object = snapshot?.val() ?? {};
-        const serverItems = Object.entries(snapshotOrEmpty).map((entry) => {
-            return { key: entry[0], value: entry[1] };
-        });
+        const serverItems = Object.entries(snapshotOrEmpty)
+            .map((entry) => {
+                return { key: entry[0], value: entry[1] };
+            })
+            .toReversed();
         cartItems = serverItems;
     });
 
@@ -75,7 +77,7 @@
 {/if}
 
 <ul class="cart">
-    {#each cartItems as { key, value }, i}
+    {#each cartItems as { key, value }, i (key)}
         <li>
             <button style={`--offset: ${i}`} on:click={() => handleDelete(key)}
                 >{value}
