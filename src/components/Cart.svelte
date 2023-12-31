@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { database } from "../scripts/util";
+    import { database } from "../scripts/firebase";
     import {
         ref,
         push,
@@ -47,7 +47,6 @@
         cartItems = serverItems;
     });
 
-    // Stop the form
     function handleForm(e: Event) {
         e.preventDefault();
     }
@@ -112,7 +111,6 @@
     }
 
     /* Loading icon style */
-
     .loading-icon {
         max-width: 50%;
         margin-inline: auto;

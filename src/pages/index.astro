@@ -1,7 +1,7 @@
 ---
 import { Icon } from "astro-icon/components";
 import Layout from "../layouts/Layout.astro";
-import CartAdder from "../components/Cart-Adder.svelte";
+import App from "../components/App.svelte";
 ---
 
 <Layout
@@ -9,23 +9,10 @@ import CartAdder from "../components/Cart-Adder.svelte";
     description="Shopping cart home page"
     viewTransition={false}
 >
-    <div class="icon">
-        <Icon name="whale" width={500} height={500} />
-    </div>
-    <CartAdder client:load>
+    <App client:load>
+        <Icon slot="icon" name="whale" width={500} height={500} />
         <Icon slot="spinner" name="spinner" width={500} height={500} />
-    </CartAdder>
+    </App>
 </Layout>
 
-<style>
-    .icon {
-        width: 65%;
-        aspect-ratio: 1 / 1;
-        user-select: none;
-        margin-inline: auto;
-    }
-    .icon img {
-        -webkit-user-drag: none;
-        user-drag: none;
-    }
-</style>
+<style></style>

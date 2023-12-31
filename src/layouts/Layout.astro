@@ -15,8 +15,6 @@ const { title, description, viewTransition = true } = Astro.props;
 <html lang="en">
     <Head {title} {description} {viewTransition} />
     <body>
-        <main id="main">
-            <slot />
-        </main>
+        <slot />
     </body>
 </html>
