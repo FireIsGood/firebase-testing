@@ -7,14 +7,16 @@
         onValue,
         type DataSnapshot,
     } from "firebase/database";
-    const itemsInCart = ref(database, "items");
 
+    // Database stuff
+    const itemsInCart = ref(database, "items");
+    let accessedDatabase = false;
+
+    // Cart stuff
     type CartItem = {
         key: string;
         value: string;
     };
-
-    // Cart stuff
     let cartItems: CartItem[] = [];
     let item: string = "";
 
@@ -40,6 +42,7 @@
 
     // Updating live
     onValue(itemsInCart, (snapshot: DataSnapshot | null) => {
+        accessedDatabase = true;
         const snapshotOrEmpty: object = snapshot?.val() ?? {};
         const serverItems = Object.entries(snapshotOrEmpty)
             .map((entry) => {
@@ -70,7 +73,7 @@
     />
 </form>
 
-{#if cartItems.length === 0}
+{#if !accessedDatabase}
     <div class="loading-icon">
         <slot name="spinner" />
     </div>
