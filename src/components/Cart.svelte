@@ -59,7 +59,7 @@
         bind:value={item}
         type="text"
         id="input-field"
-        placeholder="Bread"
+        placeholder="Shopping Item..."
         autocomplete="off"
     />
     <input
