@@ -11,8 +11,8 @@ export const auth = getAuth();
 export async function signIn() {
     try {
         const result = await signInWithPopup(auth, provider);
-        const credentials = GoogleAuthProvider.credentialFromResult(result);
-        const token = credentials?.accessToken;
+        // const credentials = GoogleAuthProvider.credentialFromResult(result);
+        // const token = credentials?.accessToken;
     } catch (err: any) {
         // Handle Errors here.
         const errorCode = err.code;
