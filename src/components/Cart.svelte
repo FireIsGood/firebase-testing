@@ -108,6 +108,9 @@
         display: flex;
         flex-direction: column;
         gap: 1rem;
+        width: min(600px, 100%);
+        margin-inline: auto;
+        margin-bottom: 2rem;
     }
 
     /* Loading icon style */

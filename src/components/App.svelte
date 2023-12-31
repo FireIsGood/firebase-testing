@@ -71,13 +71,14 @@
     }
 
     .sign-out {
-        padding: 4px 8px;
+        font-size: 0.9em;
+        padding: 0.5em;
         margin-inline-end: auto;
     }
 
     /* icon styles */
     .icon {
-        width: 65%;
+        width: min(400px, 65%);
         aspect-ratio: 1 / 1;
         user-select: none;
         margin-inline: auto;
